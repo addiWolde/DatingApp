@@ -45,9 +45,6 @@ namespace DatingApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> updateUser(int id, [FromBody]UserForUpdateDto userForUpdateDto)
         {
-            if (!ModelState.IsValid)
-                throw new Exception($"Model state is not valid!");
-
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
